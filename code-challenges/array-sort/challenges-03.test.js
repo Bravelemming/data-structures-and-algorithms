@@ -140,18 +140,32 @@ const meetings = [
   new Meeting('Friday', '1200', '1345'),
 ];
 
-const sortMeetingsByDay = (arr) => {
-  arrValues = [{'m': 1}, {'t': 2}, {'w': 3}, {'th': 4}, {'f': 5} ];
+var weekDayNumber = function identifyWeekday (x) {
+  switch(x) {
+  case 'Monday':
+    return 1;
+  case 'Tuesday':
+    return 2;
+  case 'Wednesday':
+    return 3;
+  case 'Thursday':
+    return 4;
+  case 'Friday':
+    return 5;
+  default:
+    return x;
+  }
+}
 
-  arr.sort(function (a, b) {
-    return a.dayOfWeek.localeCompare(b.dayOfWeek);
-    // if (a.lastName === b.lastName && a.firstName === b.firstName){
-    //   return a.age - b.age;
-    // } else if(a.lastName === b.lastName) {
-    //   return a.firstName.localeCompare(b.firstName);
-    // } else {
-    //   return a.lastName.localeCompare(b.lastName);
-    // }
+const sortMeetingsByDay = (arr) => {
+
+  arr.sort(function (a,b) {
+
+    let anum = weekDayNumber(a.dayOfWeek);
+    let bnum = weekDayNumber(b.dayOfWeek);
+
+    return anum - bnum;
+
   });
   return arr;
 };
