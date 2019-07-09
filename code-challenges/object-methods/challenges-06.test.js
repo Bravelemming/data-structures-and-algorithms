@@ -101,12 +101,7 @@ const hasChildrenValues = (arr, character) => {
       res = Object.values(element)[2].length > 0;
       return res;
     }
-    
   });
-
-  //set res to true if...
-  
-  
   //return bool
   return res;
 };
@@ -136,12 +131,6 @@ const hasChildrenEntries = (arr, character) => {
 };
 
 
-// {
-//   name: 'Eddard',
-//   spouse: 'Catelyn',
-//   children: ['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon'],
-//   house: 'Stark'
-// }
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
@@ -221,6 +210,7 @@ const houseSurvivors = (arr) => {
     }
 
     if (el.children.length > 0) {
+      // eslint-disable-next-line no-unused-vars
       for (let child of el.children) {
         totalCharacters++;
       }
