@@ -8,9 +8,12 @@ Write a function named oddValues that, given an array of integers as input, uses
 For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
+
 const oddValues = (arr) => {
-  // Solution code here...
-};
+  return arr.filter((a) => a % 2 === 1
+  );
+}
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -25,7 +28,16 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 const filterStringsWithVowels = (arr) => {
   // Solution code here...
+  // let result = arr.filter(vowel => {
+  //   for (let i = 0 ; vowel.length > i ; i++){
+  //     let letter = vowel[i];
+  //     if (letter === 'a' || letter === 'e' || letter === 'i' || letter === 'o' || letter === 'u') return vowel;
+  //   }
+  return arr.filter(word => {
+    return word.match(/\w*[aeiou]\w*/gi);
+  });
 };
+
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,7 +50,19 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
+  // let bob =  arr.filter((value, index, array) => {
+  //   let catchs = false;
+  //   forbiddenValues.forEach(element => {
+  //     if ( value !== element ) catchs = true;
+  //   });
+  // })
+  // console.log(bob);
+  // return bob;
+  return arr.filter(a =>{
+    return forbiddenValues.indexOf(a) === -1
+  })
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -81,6 +105,10 @@ const snorlaxData = {
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
   // Solution code here...
+  return arr.filter(a =>{
+    if (a.baseStat > minBaseStat) return true;
+  })
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -93,6 +121,11 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 
 const getStatName = (arr, minBaseStat) => {
   // Solution code here...
+  let c = arr.filter(a =>{
+    if (a.baseStat > minBaseStat) return true;
+  })
+
+  return c.map(c => c.stat.name)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -146,7 +179,26 @@ const characters = [
 
 const getCharactersWithoutChildren = (arr) => {
   // Solution code here...
+  return arr.filter(a => {
+    return a.hasOwnProperty('children');
+  })
 };
+
+// const hasChildrenEntries = (arr, character) => {
+//   // Solution code here...
+//   let res = false;
+//   arr.forEach(element => {
+//     let characterEntry = Object.entries(element);
+//     // console.log(characterEntry);
+//     if(characterEntry[0][1] === character){
+
+//       res = characterEntry[2][1].length > 0;
+//       // console.log(characterEntry[2][1]);
+//       return res;
+//     }
+//   });
+//   return res;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
