@@ -10,6 +10,12 @@ Note: You may not use the array's built-in length property.
 
 const countNumberOfElements = (arr) => {
   // Solution code here...
+  return arr.reduce( (accumulator, currentValue, currentIndex, array) => {
+    return accumulator+=1;
+  }, 0);
+  // console.log(c);
+  // return c;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -70,6 +76,10 @@ let starWarsData = [{
 
 const returnNames = (arr) => {
   // Solution code here...
+  return arr.reduce( (accumulator, currentValue, currentIndex, array) => {
+    accumulator[currentIndex]=currentValue.name;
+    return accumulator;
+  },[]);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,7 +92,12 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (str) => {
   // Solution code here...
+  let arr = str.split('');
+  return arr.reduce ( (newS, letter) => {
+    return letter + newS;
+  }, '')
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -135,6 +150,12 @@ const characters = [
 
 const countNumberOfChildren = (arr) => {
   // Solution code here...
+  return arr.reduce( (accumulator, currentValue, currentIndex, array) => {
+    if (currentValue.children !== undefined){
+      accumulator+= currentValue.children.length;
+    }
+    return accumulator;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -147,7 +168,18 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 
 const calculateAverage = (arr) => {
   // Solution code here...
+  let c = arr.reduce( (accumulator, currentValue, currentIndex, array) => {
+    let tempcount = accumulator.count;
+    let tempsum = accumulator.sum;
+    accumulator = {count: tempcount+1 , sum: tempsum + currentValue };
+    console.log(accumulator);
+    return accumulator;
+  }, { count: 0, sum: 0 });
+
+  return c.sum / c.count;
 };
+
+// expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -168,6 +200,19 @@ const isPrime = (value) => {
 
 const countPrimeNumbers = (arr) => {
   // Solution code here...
+  let c = arr.reduce( (accumulator, currentValue, currentIndex, array) => {
+    if ( isPrime(currentValue) ) {
+      accumulator+=1;
+    }
+    
+    // let tempcount = accumulator.count;
+    // let tempsum = accumulator.sum;
+    // accumulator = {count: tempcount+1 , sum: tempsum + currentValue };
+    // console.log(accumulator);
+    return accumulator;
+  }, 0);
+
+  return c;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -211,6 +256,7 @@ const snorlaxData = {
 
 const extractStat = (statName, arr) => {
   // Solution code here...
+
 };
 
 /* ------------------------------------------------------------------------------------------------
