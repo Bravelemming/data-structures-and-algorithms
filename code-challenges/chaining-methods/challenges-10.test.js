@@ -13,6 +13,19 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
+  let total = 0;
+  //reduce the array of arrays
+  input.reduce( (accumulator, inputArray) => {
+    // filter each individual array
+    accumulator = inputArray.filter(exists => {
+      //if the array value is equal to target, return true
+      if( target === exists) {total = total + 1;
+        return true;
+      }
+    })
+    return accumulator;
+  }, []);
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -27,6 +40,19 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
+  let total = 0;
+  //reduce the array of arrays
+  input.reduce( (accumulator, inputArray) => {
+    // filter each individual array
+    accumulator = inputArray.filter(number => {
+      //if the array value is a number, add total.
+      if(! isNaN(number) ) {total = total + number;
+        return true;
+      }
+    })
+    return accumulator;
+  }, []);
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -43,6 +69,22 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+  // Solution code here...
+  let total = 0;
+  //reduce the array of arrays
+  input.reduce( (accumulator, inputArray) => {
+    // filter each individual array
+    accumulator.push( inputArray.filter(exists => {
+      //if the array value is equal to target, return true
+      if( ! isNaN(exists) && exists % 5 !== 0) {
+        return true;
+      }
+    }))
+
+    return accumulator;
+  }, []);
+  //to do: actual math on array of arrays
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
