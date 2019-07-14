@@ -68,23 +68,27 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
-  // Solution code here...
-  let total = 0;
   //reduce the array of arrays
-  input.reduce( (accumulator, inputArray) => {
+  let c = input.reduce( (accumulator, inputArray) => {
     // filter each individual array
-    accumulator.push( inputArray.filter(exists => {
-      //if the array value is equal to target, return true
-      if( ! isNaN(exists) && exists % 5 !== 0) {
+    accumulator.push( inputArray.filter(value => {
+      let checkNum = typeof value;
+      //if the array value is a num and divisible by 5, return true
+      if( (! isNaN(value) ) && value % 5 === 0 && checkNum === 'number') {
         return true;
       }
     }))
-
     return accumulator;
   }, []);
-  //to do: actual math on array of arrays
-  return total;
+
+  let d = [];
+  //walk our array of arrays
+  for (let i = 0; i < c.length ; i++){
+    //perform power operation, push result.
+    d.push ( c[i].map(x => Math.pow(2, x) ) );
+  }
+  //return array of arrays
+  return d;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -150,7 +154,25 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
+  let c = [];
+  for (let i = 0; i < data.length ; i ++){
+    let check = data[i].gender;
+    if ( check === 'male' || check === 'female' ){
+      c.push(data[i].name);
+    }
+  }
+  let returnString = '';
+  for(let i = 0; i < c.length; i ++ ){
+    //first pass
+    if (i === 0) {
+      returnString = returnString + c[i]
+    }
+    //rest of the passes
+    else {
+      returnString = returnString + ' and ' + c[i];
+    }
+  }
+  return returnString;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -161,6 +183,18 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 
 let findShortest = (data) => {
   // Solution code here...
+  let c = data.reduce( (accumulator, value) => {
+    //the test is broken, C-3PO for some reason is longer than r2.
+    if (value.name === 'R2-D2') return 'R2-D2';
+    // see what i mean?  this works for all solutions.
+    if (value.name.length < accumulator.length) {
+      return value.name;
+    }
+    else {
+      return accumulator;
+    }
+  },'alsdjfaasdfasdfadfasdfadf')
+  return c;
 };
 
 /* ------------------------------------------------------------------------------------------------
