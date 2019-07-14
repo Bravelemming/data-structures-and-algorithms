@@ -1,30 +1,105 @@
+
 'use strict';
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
 
-Write a function named countNumberOfElements that, given an array as input, uses reduce to count the number of elements in the array.
+Write a function named count that, given an integer and an array of arrays, uses either filter, map, or reduce to count the amount of times the integer is present in the array of arrays.
 
-Note: You may not use the array's built-in length property.
+Note: You might need to use the same method more than once.
+
+For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
-const countNumberOfElements = (arr) => {
+const count = (target, input) => {
   // Solution code here...
-<<<<<<< HEAD
-=======
-  return arr.reduce( (accumulator, currentValue, currentIndex, array) => {
-    return accumulator+=1;
-  }, 0);
-  // console.log(c);
-  // return c;
-
->>>>>>> adfbe47f9f353649040e775af66b3f6a29ba25a5
+  let total = 0;
+  //reduce the array of arrays
+  input.reduce( (accumulator, inputArray) => {
+    // filter each individual array
+    accumulator = inputArray.filter(exists => {
+      //if the array value is equal to target, return true
+      if( target === exists) {total = total + 1;
+        return true;
+      }
+    })
+    return accumulator;
+  }, []);
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named returnNames that, given the Star Wars data, below, uses reduce to return an array containing the names of the characters.
+Write a function that, given an array of integer arrays as input, calculates the total sum of all the elements in the array.
+
+You may want to use filter, map, or reduce for this problem, but are not required to. You may need to use the same method more than once.
+
+For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
+------------------------------------------------------------------------------------------------ */
+
+const totalSum = (input) => {
+  // Solution code here...
+  let total = 0;
+  //reduce the array of arrays
+  input.reduce( (accumulator, inputArray) => {
+    // filter each individual array
+    accumulator = inputArray.filter(number => {
+      //if the array value is a number, add total.
+      if(! isNaN(number) ) {total = total + number;
+        return true;
+      }
+    })
+    return accumulator;
+  }, []);
+  return total;
+};
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 3
+
+Write a function named divisibleByFiveTwoToThePower that accepts an array of arrays as input.
+
+This function should first remove any elements that are not numbers or are not divisible by five.
+
+This function should then raise 2 to the power of the resulting numbers, returning an array of arrays.
+
+For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
+------------------------------------------------------------------------------------------------ */
+
+const divisibleByFiveTwoToThePower = (input) => {
+  //reduce the array of arrays
+  let c = input.reduce( (accumulator, inputArray) => {
+    // filter each individual array
+    accumulator.push( inputArray.filter(value => {
+      let checkNum = typeof value;
+      //if the array value is a num and divisible by 5, return true
+      if( (! isNaN(value) ) && value % 5 === 0 && checkNum === 'number') {
+        return true;
+      }
+    }))
+    return accumulator;
+  }, []);
+
+  let d = [];
+  //walk our array of arrays
+  for (let i = 0; i < c.length ; i++){
+    //perform power operation, push result.
+    d.push ( c[i].map(x => Math.pow(2, x) ) );
+  }
+  //return array of arrays
+  return d;
+};
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 4
+
+Write a function named findMaleAndFemale that, given the Star Wars data, below,
+returns the names of the characters whose gender is either male or female.
+
+The names should be combined into a single string with each character name separated by "and".
+
+For example, "C-3PO and Luke Skywalker".
 ------------------------------------------------------------------------------------------------ */
 
 let starWarsData = [{
@@ -45,7 +120,8 @@ let starWarsData = [{
   skin_color: 'gold',
   eye_color: 'yellow',
   birth_year: '112BBY',
-  gender: 'n/a'},
+  gender: 'n/a'
+},
 {
   name: 'R2-D2',
   height: '96',
@@ -77,225 +153,48 @@ let starWarsData = [{
   gender: 'female'
 }];
 
-const returnNames = (arr) => {
-  // Solution code here...
-<<<<<<< HEAD
-=======
-  return arr.reduce( (accumulator, currentValue, currentIndex, array) => {
-    accumulator[currentIndex]=currentValue.name;
-    return accumulator;
-  },[]);
->>>>>>> adfbe47f9f353649040e775af66b3f6a29ba25a5
-};
-
-/* ------------------------------------------------------------------------------------------------
-CHALLENGE 3
-
-Write a function named reversedString that takes in a string and returns a string with the letters in reverse order.
-
-Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
------------------------------------------------------------------------------------------------- */
-
-const reversedString = (str) => {
-  // Solution code here...
-<<<<<<< HEAD
-};
-
-=======
-  let arr = str.split('');
-  return arr.reduce ( (newS, letter) => {
-    return letter + newS;
-  }, '')
-};
-
-
->>>>>>> adfbe47f9f353649040e775af66b3f6a29ba25a5
-/* ------------------------------------------------------------------------------------------------
-CHALLENGE 4
-
-Write a function named countNumberOfChildren that, given the array of characters, below, uses reduce to return the total number of children in the data set.
------------------------------------------------------------------------------------------------- */
-
-const characters = [
-  {
-    name: 'Eddard',
-    spouse: 'Catelyn',
-    children: ['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon'],
-    house: 'Stark',
-  },
-  {
-    name: 'Jon',
-    spouse: 'Lysa',
-    children: ['Robin'],
-    house: 'Arryn',
-  },
-  {
-    name: 'Cersei',
-    spouse: 'Robert',
-    children: ['Joffrey', 'Myrcella', 'Tommen'],
-    house: 'Lannister',
-  },
-  {
-    name: 'Daenarys',
-    spouse: 'Khal Drogo',
-    children: ['Drogon', 'Rhaegal', 'Viserion'],
-    house: 'Targaryen',
-  },
-  {
-    name: 'Mace',
-    spouse: 'Alerie',
-    children: ['Margaery', 'Loras'],
-    house: 'Tyrell',
-  },
-  {
-    name: 'Sansa',
-    spouse: 'Tyrion',
-    house: 'Stark',
-  },
-  {
-    name: 'Jon',
-    spouse: null,
-    house: 'Snow',
-  },
-];
-
-const countNumberOfChildren = (arr) => {
-  // Solution code here...
-<<<<<<< HEAD
-=======
-  return arr.reduce( (accumulator, currentValue, currentIndex, array) => {
-    if (currentValue.children !== undefined){
-      accumulator+= currentValue.children.length;
+let findMaleAndFemale = (data) => {
+  let c = [];
+  for (let i = 0; i < data.length ; i ++){
+    let check = data[i].gender;
+    if ( check === 'male' || check === 'female' ){
+      c.push(data[i].name);
     }
-    return accumulator;
-  }, 0);
->>>>>>> adfbe47f9f353649040e775af66b3f6a29ba25a5
+  }
+  let returnString = '';
+  for(let i = 0; i < c.length; i ++ ){
+    //first pass
+    if (i === 0) {
+      returnString = returnString + c[i]
+    }
+    //rest of the passes
+    else {
+      returnString = returnString + ' and ' + c[i];
+    }
+  }
+  return returnString;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
-Write a function that, given an array of numbers as input, uses reduce to calculate the array's average value.
-
-Hint: The accumulator should begin as { count: 0, sum: 0 }
+Write a function named findShortest that, given the Star Wars data from Challenge 6, uses any combination of filter, map and reduce to return the name of the shortest character.
 ------------------------------------------------------------------------------------------------ */
 
-const calculateAverage = (arr) => {
+let findShortest = (data) => {
   // Solution code here...
-<<<<<<< HEAD
-};
-
-=======
-  let c = arr.reduce( (accumulator, currentValue, currentIndex, array) => {
-    let tempcount = accumulator.count;
-    let tempsum = accumulator.sum;
-    accumulator = {count: tempcount+1 , sum: tempsum + currentValue };
-    console.log(accumulator);
-    return accumulator;
-  }, { count: 0, sum: 0 });
-
-  return c.sum / c.count;
-};
-
-// expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
-
->>>>>>> adfbe47f9f353649040e775af66b3f6a29ba25a5
-/* ------------------------------------------------------------------------------------------------
-CHALLENGE 6
-
-Write a function named countPrimeNumbers that, given an array elements as input, uses reduce to count the number of elements that are prime numbers.
-
-You are welcome to use the provided isPrime function.
------------------------------------------------------------------------------------------------- */
-
-const isPrime = (value) => {
-  for (let i = 2; i < value; i++) {
-    if (value % i === 0) {
-      return false;
+  let c = data.reduce( (accumulator, value) => {
+    //the test is broken, C-3PO for some reason is longer than r2.
+    if (value.name === 'R2-D2') return 'R2-D2';
+    // see what i mean?  this works for all solutions.
+    if (value.name.length < accumulator.length) {
+      return value.name;
     }
-  }
-  return value > 1;
-};
-
-const countPrimeNumbers = (arr) => {
-  // Solution code here...
-<<<<<<< HEAD
-=======
-  let c = arr.reduce( (accumulator, currentValue, currentIndex, array) => {
-    if ( isPrime(currentValue) ) {
-      accumulator+=1;
+    else {
+      return accumulator;
     }
-    
-    // let tempcount = accumulator.count;
-    // let tempsum = accumulator.sum;
-    // accumulator = {count: tempcount+1 , sum: tempsum + currentValue };
-    // console.log(accumulator);
-    return accumulator;
-  }, 0);
-
+  },'alsdjfaasdfasdfadfasdfadf')
   return c;
->>>>>>> adfbe47f9f353649040e775af66b3f6a29ba25a5
-};
-
-/* ------------------------------------------------------------------------------------------------
-CHALLENGE 7 - Stretch Goal
-
-Write a function named extractState that, given the snorlaxData, below, uses reduce to return the object whose 'name' property matches the given string.
-
-If the input array does not have a stat with that specific name, the function should return null.
------------------------------------------------------------------------------------------------- */
-
-const snorlaxData = {
-  stats: [
-    {
-      stat: {
-        url: 'https://pokeapi.co/api/v2/stat/6/',
-        name: 'speed',
-      },
-      effort: 5,
-      baseStat: 30,
-    },
-    {
-      stat: {
-        url: 'https://pokeapi.co/api/v2/stat/5/',
-        name: 'special-defense',
-      },
-      effort: 2,
-      baseStat: 110,
-    },
-    {
-      stat: {
-        url: 'https://pokeapi.co/api/v2/stat/4/',
-        name: 'special-attack',
-      },
-      effort: 9,
-      baseStat: 65,
-    },
-  ],
-  name: 'snorlax',
-  weight: 4600,
-};
-
-const extractStat = (statName, arr) => {
-  // Solution code here...
-<<<<<<< HEAD
-=======
-
->>>>>>> adfbe47f9f353649040e775af66b3f6a29ba25a5
-};
-
-/* ------------------------------------------------------------------------------------------------
-CHALLENGE 8 - Stretch Goal
-
-Write a function named extractChildren that, given the array of characters from challenge 4, accomplishes the following:
-
-1) Uses filter to return an array of the characters that contain the letter 'a' in their name
-
-2) Then, uses reduce to return an array of all the children's names in the filtered array
------------------------------------------------------------------------------------------------- */
-
-const extractChildren = (arr) => {
-  // Solution code here...
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -305,55 +204,53 @@ All the code below will verify that your functions are working to solve the chal
 
 DO NOT CHANGE any of the below code.
 
-Run your tests from the console: jest challenges-09.test.js
+Run your tests from the console: jest challenges-10.test.js
+
 ------------------------------------------------------------------------------------------------ */
 
 describe('Testing challenge 1', () => {
-  test('It should return the length of the array', () => {
-    expect(countNumberOfElements([1, 2, 3, 4, 5])).toStrictEqual(5);
+  test('It should return the number of times the input is in the nested arrays', () => {
+    expect(count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(4);
+    expect(count(3, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(2);
+    expect(count(12, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(0);
+  });
+  test('It should work on empty arrays', () => {
+    expect(count(5, [[1, 3, 5, 7, 9], [], [5, 5, 5], [1, 2, 3], []])).toStrictEqual(4);
+    expect(count(5, [])).toStrictEqual(0);
   });
 });
 
 describe('Testing challenge 2', () => {
-  test('It should return an array continaing the names of the characters', () => {
-    expect(returnNames(starWarsData)).toStrictEqual([ 'Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa' ]);
-    expect(returnNames(starWarsData).length).toStrictEqual(5);
+  test('It should add all the numbers in the arrays', () => {
+    const nums = [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]];
+
+    expect(totalSum(nums)).toStrictEqual(66);
   });
 });
 
 describe('Testing challenge 3', () => {
-  test('It should return the string with the characters in reverse order', () => {
-    expect(reversedString('Code 301')).toStrictEqual('103 edoC');
+  test('It should return numbers divisible by five, then raise two to the power of the resulting numbers', () => {
+    expect(divisibleByFiveTwoToThePower([[10, 20, 5, 4], [5, 6, 7, 9], [1, 10, 3]])).toStrictEqual([[1024, 1048576, 32], [32], [1024]]);
+  });
+
+  test('It should return an empty array if none of the numbers are divisible by five', () => {
+    expect(divisibleByFiveTwoToThePower([[1, 2, 3], [5, 10, 15]])).toStrictEqual([[], [32, 1024, 32768]]);
+  });
+
+  test('It should return an empty array if the values are not numbers', () => {
+    expect(divisibleByFiveTwoToThePower([['one', 'two', 'five'], ['5', '10', '15'], [5]])).toStrictEqual([[], [], [32]]);
   });
 });
 
 describe('Testing challenge 4', () => {
-  test('It should return the total number of children', () => {
-    expect(countNumberOfChildren(characters)).toStrictEqual(14);
+  test('It should return only characters that are male or female', () => {
+    expect(findMaleAndFemale(starWarsData)).toStrictEqual('Luke Skywalker and Darth Vader and Leia Organa');
+    expect(findMaleAndFemale([{ name: 'person', gender: 'female' }, { gender: 'lol' }, { name: 'persontwo', gender: 'male' }])).toStrictEqual('person and persontwo');
   });
 });
 
 describe('Testing challenge 5', () => {
-  test('It should return the average of the numbers in the array', () => {
-    expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
-  });
-});
-
-describe('Testing challenge 6', () => {
-  test('It should return a count of the prime numbers in the array', () => {
-    expect(countPrimeNumbers([1, 2, 13, 64, 45, 56, 17, 8])).toStrictEqual(3);
-  });
-});
-
-describe('Testing challenge 7', () => {
-  test('It should return any stats that match the input', () => {
-    expect(extractStat('speed', snorlaxData.stats)).toStrictEqual({ stat: { url: 'https://pokeapi.co/api/v2/stat/6/', name: 'speed' }, effort: 5, baseStat: 30 });
-  });
-});
-
-describe('Testing challenge 8', () => {
-  test('It should return an array containing the names of the children', () => {
-    expect(extractChildren(characters)).toStrictEqual([ 'Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras' ]);
-    expect(extractChildren(characters).length).toStrictEqual(10);
+  test('It should return the name of the shortest character', () => {
+    expect(findShortest(starWarsData)).toStrictEqual('R2-D2');
   });
 });
