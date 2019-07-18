@@ -10,6 +10,9 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 
 const firstLetters = (arr) => {
   // Solution code here...
+  return arr.map(x =>{
+    return x[0];
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -22,6 +25,9 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 
 const findHappiness = (arr) => {
   // Solution code here...
+  return arr.filter(x => {
+    return x.includes(':)');
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -34,6 +40,9 @@ For example, (123) 456-7890 returns 1234567890
 
 const standardizePhoneNumbers = (arr) => {
   // Solution code here...
+  return arr.map(x=>{
+    return x.split(/\(|\)|-|\s/g).join('');
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,6 +55,11 @@ For example, 'abcdefg' returns 'bdf'
 
 const onlyOddChars = (str) => {
   // Solution code here...
+  return str.split('').map((char, idx)=>{
+    if(idx % 2 === 1){
+      return char;
+    }
+  }).join('');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,7 +69,11 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = (arr) => {
-  // Solution code here...
+  let flag = true;
+  arr.map ( x => {
+    if (! x.includes(':)') ) flag = false;
+  })
+  return flag;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -66,7 +84,17 @@ Write a function named findAnything that takes in an array of strings, along wit
 
 const findAnything = (arr, target) => {
   // Solution code here...
+
+  return arr.filter ( (x) => {
+    return x.includes(target);
+  })
+  
 };
+
+const words = ['things', 'apple (:)', ':)banana', 'missing that thing', 'cant:)aloupe'];
+
+expect(findAnything(words, ':)')).toStrictEqual(findHappiness(words));
+expect(findAnything(words, 'i')).toStrictEqual(['things', 'missing that thing']);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7
@@ -76,7 +104,19 @@ Write a function named findEvery that takes in an array of strings, along with a
 
 const findEvery = (arr, target) => {
   // Solution code here...
+  let flag = true;
+  arr.map ( x => {
+    if (! x.includes(target) ) flag = false;
+  })
+  return flag;
 };
+
+// test('It should determine whether all the strings contain a given string', () => {
+//   const words = ['things', 'apple pie (:)', ':)banana pie', 'missing that thing', 'cant:)aloupe is tasty'];
+
+//   expect(findEvery(words, 'a')).toStrictEqual(false);
+//   expect(findEvery(words, '')).toStrictEqual(true);
+//   expect(findEvery(words, 'i')).toStrictEqual(true);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8
@@ -92,7 +132,28 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 
 const unenrollBrook = (arr) => {
   // Solution code here...
+  return arr.map(x =>{
+    return x.filter(y => {
+      if (! y.includes('Brook')) return y;
+    })
+  })
 };
+
+
+// test('It should remove Brook from all courses', () => {
+//   const roster = [
+//     ['Michelle', 'Allie', 'Brook TESTING'],
+//     ['Brook Riggio', 'hey look it\'s Brook', 'Jennifer'],
+//     ['Nicholas', 'Sam', 'Scott', 'Vinicio']
+//   ];
+
+//   expect(unenrollBrook(roster)).toStrictEqual([
+//     ['Michelle', 'Allie'],
+//     ['Jennifer'],
+//     ['Nicholas', 'Sam', 'Scott', 'Vinicio']
+//   ]);
+//   expect(unenrollBrook([['Brook', 'person'], [], ['person', 'person', 'Brook']])).toStrictEqual([['person'], [], ['person', 'person']]);
+//   expect(unenrollBrook([])).toStrictEqual([]);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
