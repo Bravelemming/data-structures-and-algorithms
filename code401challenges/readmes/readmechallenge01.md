@@ -18,7 +18,7 @@ this approach forced a Big O of n for complexity, as it must walk the entire lis
 ## Solution
 <!-- Embedded whiteboard image -->
 see jpg attached.
-![](lab01whiteboard.jpg)
+![whiteboard](../assets/code02whiteboard.jpg)
 
 ## credits and contributions
 Jackie 
