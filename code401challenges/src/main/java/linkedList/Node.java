@@ -6,6 +6,7 @@
 package linkedList;
 
 public class Node<T> {
+
     public Node next;
     private T data;
 
