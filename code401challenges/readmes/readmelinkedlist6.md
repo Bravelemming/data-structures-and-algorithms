@@ -3,30 +3,29 @@ Author: Jack Daniel Kinne.
 Challenge by: Codefellows.
 <!-- Short summary or background information -->
 write a linked list from scratch without using a prebuilt constructor.
-add to this challenge by making an insertbefore, insertafter, and 
+add to this challenge by making an insertbefore, insertafter, 
+and append, which i renamed insertRear.  Because reasons.
 
 ## Challenge
 <!-- Description of the challenge -->
-Create a Node class that has properties for the value stored in the Node, and a pointer to the next Node.
-Within your LinkedList class, include a head property. Upon instantiation, an empty Linked List should be 
-created.
-Define a method called insert which takes any value as an argument and adds a new node with that value to the 
-head of the list with an O(1) Time performance.
-Define a method called includes which takes any value as an argument and returns a boolean result depending 
-on whether that value exists as a Node’s value somewhere within the list.
-Define a method called toString (or __str__ in Python) which takes in no arguments and returns a string 
-representing all the values in the Linked List.
+- append(value) which adds a new node with the given value to the end of the list
+- insertBefore(value, newVal) which add a new node with the given 
+newValue immediately before the first value node
+- insertAfter(value, newVal) which add a new node with the given 
+newValue immediately after the first value node
 
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
-#### Create a linked List class
-- holds method for insert and print
-#### Create a node class
-- holds data
+
+- append - iterate through the list until next is null.  add node with value.
+- insert before - iterate trhough the list until value matches data.  create a temp node. 
+connect temp to next and previous.  create a new node. link new node to previous and next nodes.
+- insert after - same as before, except treat current as previous and current.next as next.
+
 #### Big O : 
-- insert: O (1)
-- print: O (n)
-- create: O (1)
+- insertRear: O (n)
+- insertBefore: O (n)
+- insertAfter: O (n)
 
 ## Solution
 <!-- Embedded whiteboard image -->
