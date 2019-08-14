@@ -5,3 +5,4 @@
 - [binary search](readmes/readmechallenge03.md)
 - [linked list](readmes/readmelinkedlist5.md)
 - [extended list](readmes/readmelinkedlist6.md)
+- [doubly linked list](readmes/readmelinkedlist7.md)
