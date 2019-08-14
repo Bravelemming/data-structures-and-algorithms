@@ -95,4 +95,17 @@ public class LinkedListTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void kthFromEnd() {
+        LinkedList lawl = new LinkedList(1);
+        lawl.insertFront(2);
+        lawl.insertFront(3);
+        lawl.insertFront(4);
+
+        String expected = lawl.kthFromEnd(1);
+        String actual = "2";
+
+        assertEquals(expected, actual);
+    }
 }

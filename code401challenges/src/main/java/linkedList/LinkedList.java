@@ -19,6 +19,9 @@ public class LinkedList<T> {
         head.next = save;
         //iterate number of nodes in list
         nodeCount++;
+
+        //save previous for old node heads
+        save.previous = head;
     }
 
     public void insertRear (T dataAdd ){
@@ -28,10 +31,15 @@ public class LinkedList<T> {
 
         //find last
         while(current != null){
+            //TODO: set current.previous as current node
+            //current.previous = old;
+
             //move old forward
             old = current;
             //move to next node
             current = current.next;
+
+
         }
         //create new node
         current = new Node(dataAdd);
@@ -65,6 +73,7 @@ public class LinkedList<T> {
             }
             //move old forward
             previous = current;
+            //TODO: save previous in node
             //move to next node
             current = current.next;
         }
@@ -94,8 +103,30 @@ public class LinkedList<T> {
             }
             //move to next node
             current = current.next;
+            //TODO: save previous in node
         }
         return "no matching value found.";
+    }
+
+    //find kth node from end.  return value
+    public String kthFromEnd(int k){
+        //track current
+        Node current = head;
+        //track old
+        Node old = head;
+        //while current exists
+        while(current != null)
+        {
+            old = current;
+            //move to next node until we find the last
+            current = current.next;
+        }
+        //walk back k nodes
+        for(int i = 0 ; i < k; i++){
+            old = old.previous;
+        }
+        //return that value
+        return old.getData().toString();
     }
 
 
@@ -132,7 +163,11 @@ public class LinkedList<T> {
     public static void main(String [] args) {
         LinkedList lawl = new LinkedList(1);
         lawl.insertFront(2);
-        //System.out.println(lawl.toString() );
+        lawl.insertFront(3);
+        lawl.insertFront(4);
+        System.out.println(lawl.toString() );
+        System.out.println(lawl.kthFromEnd(1));
+        //System.out.println( lawl.head.next.next.previous.getData());
     }
 
 }//end class
