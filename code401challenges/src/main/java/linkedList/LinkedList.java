@@ -110,6 +110,9 @@ public class LinkedList<T> {
 
     //find kth node from end.  return value
     public String kthFromEnd(int k){
+        if (k < 0){
+            throw new IllegalArgumentException("k cannot be negative");
+        }
         //track current
         Node current = head;
         //track old
