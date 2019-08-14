@@ -108,4 +108,21 @@ public class LinkedListTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test (expected=IllegalArgumentException.class)
+    public void kthFromEndOutOfBounds() {
+        LinkedList lawl = new LinkedList(1);
+        lawl.insertFront(2);
+        lawl.insertFront(3);
+        lawl.insertFront(4);
+
+        String expected = lawl.kthFromEnd(-1);
+        int actual = 0;
+
+        //LinkedListTest instance = new LinkedListTest();
+        //int expResult = 0;
+
+        assertEquals(expected, actual);
+
+    }
 }
