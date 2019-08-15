@@ -3,18 +3,24 @@
 package linkedList;
 
 public class LinkedList<T> {
-    private Node head;
+    private Node<T> head;
     private int nodeCount = 0;
 
+    //constructor
     public LinkedList( T dataAdd ) {
-        head = new Node(dataAdd);
+        head = new Node<T>(dataAdd);
+    }
+
+    //overloaded constructor
+    public LinkedList() {
+        head = null;
     }
 
     public void insertFront (T dataAdd ){
         //save pointer to head
         Node save = head;
         //create new node
-        head = new Node(dataAdd);
+        head = new Node<>(dataAdd);
         //set head's next node in the list
         head.next = save;
         //iterate number of nodes in list
@@ -38,11 +44,9 @@ public class LinkedList<T> {
             old = current;
             //move to next node
             current = current.next;
-
-
         }
         //create new node
-        current = new Node(dataAdd);
+        current = new Node<>(dataAdd);
         //tie old node's next to new
         old.next = current;
         //iterate number of nodes in list
@@ -60,7 +64,7 @@ public class LinkedList<T> {
             //if data matches value, insert before
             if (current.getData().equals(value) ){
                 //create new node
-                current = new Node(newVal);
+                current = new Node<>(newVal);
                 //save previous nodes' next
                 save = previous.next;
                 //tie previous node's next to new
@@ -93,7 +97,7 @@ public class LinkedList<T> {
                 //save current.next somewhere (pointER to 5)
                 save = current.next;
                 //node position is current.next
-                current.next = new Node(newVal);
+                current.next = new Node<>(newVal);
                 //tie next to current.next
                 current.next.next = save;
 
@@ -151,20 +155,55 @@ public class LinkedList<T> {
         //output string
         StringBuilder output = new StringBuilder("");
         //track current
-        Node current = head;
+        Node<T> current = head;
         //while current exists
         while(current != null)
         {
             //append to output
             output.append( current.getData() + " " );
+            //System.out.println(current.getData() );
             //move to next node
             current = current.next;
         }
+
         return output.toString();
     }
 
+    // Write a function called mergeLists which takes two linked lists as arguments.
+    // Zip the two linked lists together into one so that the nodes alternate between
+    // the two lists and return a reference to the head of the zipped list. Try and
+    // keep additional space down to O(1). You have access to the Node class and all
+    // the properties on the Linked List class as well as the methods created
+    // in previous challenges.
+
+    public static <P> LinkedList<P> mergeLists(LinkedList<P>s1, LinkedList<P> s2){
+        //track nodes
+        Node <P>s1current = s1.head;
+        Node <P>s2current = s2.head;
+        LinkedList<P> s3 = new LinkedList<P>(null);
+        //throw an error if either LL is null
+        if (s1current == null || s2current == null ) throw new IllegalArgumentException("Linked list cannot be null");
+
+        // while there is a node on either
+        while (s1current != null || s2current != null ){
+            if(s1current != null){
+                //push new node
+                s3.insertRear(s1current.getData() );
+                //move to next node
+                s1current = s1current.next;
+            }
+            if(s2current != null){
+                //push new node
+                s3.insertRear(s2current.getData() );
+                //move to next node
+                s2current = s2current.next;
+            }
+        }
+        return s3;
+    }
+
     public static void main(String [] args) {
-        LinkedList lawl = new LinkedList(1);
+        LinkedList<Integer> lawl = new LinkedList<>(1);
         lawl.insertFront(2);
         lawl.insertFront(3);
         lawl.insertFront(4);

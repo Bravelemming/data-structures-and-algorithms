@@ -2,6 +2,7 @@ package linkedList;
 
 import org.junit.Test;
 
+import static linkedList.LinkedList.mergeLists;
 import static org.junit.Assert.*;
 
 public class LinkedListTest {
@@ -124,5 +125,51 @@ public class LinkedListTest {
 
         assertEquals(expected, actual);
 
+    }
+
+    @Test
+    public void mergeListsTest() {
+        LinkedList<Integer> s1 = new LinkedList<>(1);
+        LinkedList<Integer> s2 = new LinkedList<>(6);
+
+        s1.insertFront(1);
+        s1.insertFront(1);
+        s1.insertFront(1);
+
+        s2.insertFront(6);
+        s2.insertFront(6);
+        s2.insertFront(6);
+
+        //LinkedList s3 = new LinkedList(1);
+
+        s1.insertFront(1);
+        s2.insertFront(6);
+
+        s1.insertFront(1);
+        s2.insertFront(6);
+
+        s1.insertFront(1);
+        s2.insertFront(6);
+
+        LinkedList actual = mergeLists(s1,s2);
+        String expected = "null 1 6 1 6 1 6 1 6 1 6 1 6 1 6 ";
+
+        //System.out.println(s3);
+
+        assertEquals( expected, actual.toString() );
+    }
+
+    @Test (expected=IllegalArgumentException.class)
+    public void mergeListsTestNullValue() {
+        LinkedList s1 = new LinkedList(1);
+        LinkedList s2 = new LinkedList();
+        s1.insertFront(2);
+        s1.insertFront(3);
+        s1.insertFront(4);
+
+        LinkedList expected = mergeLists(s1,s2);
+        int actual = 0;
+
+        assertEquals(expected, actual);
     }
 }
