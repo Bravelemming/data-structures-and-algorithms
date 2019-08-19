@@ -66,9 +66,7 @@ public class QueueTest {
     public void peekNull() {
         Queue<Integer> emptyQueue = new Queue<>();
 
-        String expected = emptyQueue.peek().toString();
-        String actual = "null";
-        assertTrue(expected == null);
+        assertNull(emptyQueue.peek());
     }
 
     @Test
@@ -77,6 +75,16 @@ public class QueueTest {
 
         emptyQueue.enqueue(1);
         emptyQueue.dequeue();
+        String expected = emptyQueue.toString();
+        String actual = "";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void instanceQueue() {
+        Queue<Integer> emptyQueue = new Queue<>();
+
+
         String expected = emptyQueue.toString();
         String actual = "";
         assertEquals(expected, actual);

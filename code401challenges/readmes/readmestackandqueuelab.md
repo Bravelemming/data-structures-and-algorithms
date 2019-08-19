@@ -23,15 +23,15 @@ Define a method called peek that does not take an argument and returns the value
 - create a stack class
 - create nodes
 - create methods
-a stack is just a linked list with LIFO
+- a stack is just a linked list with LIFO
+- use a top pointer and the previous node for popping.
 
 - create a queue class
 - create nodes
 - create methods
-a queue is just a linked list with FIFO
-
-## Solution
-<!-- Embedded whiteboard image -->
-![whiteboard](../assets/code03whiteboard.jpg)
+- a queue is just a linked list with FIFO
+- use a front node pointer, a back node pointer, and previous for dequeuing.
 
 ## credits and contributions
+https://javarevisited.blogspot.com/2014/12/9-things-about-null-in-java.html
+https://gist.github.com/es20641/1208340/06d598126d53b048058bc243cbc4e4dd7db9a23a

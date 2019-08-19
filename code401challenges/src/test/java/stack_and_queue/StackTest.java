@@ -63,9 +63,7 @@ public class StackTest {
     public void peekNull() {
         Stack<Integer> emptyStack = new Stack<>();
 
-        String expected = emptyStack.peek().toString();
-        String actual = "null";
-        assertTrue(expected == null);
+        assertNull(emptyStack.peek());
     }
 
     @Test
@@ -79,6 +77,14 @@ public class StackTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void instanceStack() {
+        Stack<Integer> emptyStack = new Stack<>();
+
+        String expected = emptyStack.toString();
+        String actual = "";
+        assertEquals(expected, actual);
+    }
 }
 
 //Can successfully push onto a stack
