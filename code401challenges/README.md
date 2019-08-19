@@ -6,3 +6,4 @@
 - [linked list](readmes/readmelinkedlist5.md)
 - [extended list](readmes/readmelinkedlist6.md)
 - [doubly linked list](readmes/readmelinkedlist7.md)
+- [stack and queue](readmes/readmestackandqueuelab.md)
