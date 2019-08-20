@@ -18,6 +18,7 @@ public class PseudoQueue<T> {
 
     public T dequeue(){
         if(s2.peek() == null){
+            if(s1.peek() == null) return null;
             while(s1.peek() != null){
                 s2.push(s1.pop());
             }
@@ -37,8 +38,6 @@ public class PseudoQueue<T> {
 
         System.out.println("expected 1.  Got: " + out);
         System.out.println("expected 2.  Got: " + out2);
-
-
     }
 }
 
