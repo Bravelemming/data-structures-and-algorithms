@@ -34,4 +34,7 @@ the left child node, and the right child node.
 
 
 ## credits and contributions
+https://www.baeldung.com/java-binary-tree
+https://www.geeksforgeeks.org/java-integer-compareto-method/
+http://www.cs.armstrong.edu/liang/animation/web/BST.html
 
