@@ -37,6 +37,7 @@ public class Tree <T> {
         //base exit condition
         if (current != null){
             inOrder(current.left, arr ); // left
+            System.out.println(current.getData());
             arr.add((T) current.getData()); // me
             inOrder(current.right, arr); // right
         }

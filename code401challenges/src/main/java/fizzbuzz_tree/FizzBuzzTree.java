@@ -1,6 +1,6 @@
 package fizzbuzz_tree;
 
-public class FizzBuzzTree<Object> extends BinarySearchTree{
+public class FizzBuzzTree extends Tree <Object>{
     //variables
 
     //constructor
@@ -8,12 +8,12 @@ public class FizzBuzzTree<Object> extends BinarySearchTree{
         super();
     }
     //methods
-    public FizzBuzzTree<Object> wrapper (){
-        FizzBuzzTree<Object> tree = new FizzBuzzTree<>();
+    public FizzBuzzTree wrapper (){
+        FizzBuzzTree tree = new FizzBuzzTree();
         recurse(this.root, tree);
         return tree;
     }
-    public void recurse(Node current, FizzBuzzTree<Object> tree){
+    public void recurse(Node current, FizzBuzzTree tree){
         //base exit condition
         if (current != null){
             recurse(current.left, tree ); // left
@@ -21,19 +21,19 @@ public class FizzBuzzTree<Object> extends BinarySearchTree{
             recurse(current.right, tree ); // right
         }
     }
-    public void fizzy(Node current, FizzBuzzTree<Object> tree){
+    public void fizzy(Node current, FizzBuzzTree tree){
         int data = (int) current.getData();
         if ( data % 5 == 0 && data % 3 == 0 ) {
-            tree.add("fizzbuzz");
+            current.setData("fizzbuzz");
         }
         else if ( data % 5 == 0 ) {
-            tree.add("fizzbuzz");
+            current.setData("fizz");
         }
         else if ( data % 3 == 0 ) {
-            tree.add("fizzbuzz");
+            current.setData("buzz");
         }
         else {
-            tree.add(data);
+            current.setData(data);
         }
     }
 }

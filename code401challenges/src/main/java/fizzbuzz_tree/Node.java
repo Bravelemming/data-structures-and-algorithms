@@ -11,6 +11,13 @@ public class Node <T> {
     public Node(T dataAdd) {
         data = dataAdd;
     }
+
+    //constructor overloaded for reasons okay
+    public Node(T dataAdd, Node left, Node right) {
+        this.data = dataAdd;
+        this.left = left;
+        this.right = right;
+    }
     //methods
     public T getData() {
         return data;
