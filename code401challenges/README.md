@@ -10,4 +10,5 @@
 - [PseudoQueue](readmes/readmechallenge11.md)
 - [fifo_animal_shelter](readmes/readmechallenge12.md)
 - [multi_bracket_validation](readmes/readmechallenge13.md)
-- [binary_search_tree](readmes/readmelab14.md)
+- [binary_search_tree](readmes/readmelab13.md)
+- [fizzbuzz_tree](readmes/readmechallenge16.md)
