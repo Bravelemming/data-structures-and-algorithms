@@ -5,11 +5,27 @@ public class Node <T> {
     public Node left;
     public Node right;
 
+    private T data;
+
+    //constructor
+    public Node(T dataAdd) {
+        this.data = dataAdd;
+    }
+    //constructor overloaded for reasons okay
+    public Node(T dataAdd, Node left, Node right) {
+        this.data = dataAdd;
+        this.left = left;
+        this.right = right;
+    }
+
+    //methods
+    public T getData() {
+        return data;
+    }
+
     public void setData(T data) {
         this.data = data;
     }
-
-    private T data;
 
     public Node getLeft() {
         return left;
@@ -27,12 +43,5 @@ public class Node <T> {
         this.right = right;
     }
 
-    //constructor
-    public Node(T dataAdd) {
-        data = dataAdd;
-    }
-    //methods
-    public T getData() {
-        return data;
-    }
+
 }

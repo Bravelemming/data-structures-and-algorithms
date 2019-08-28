@@ -12,3 +12,4 @@
 - [multi_bracket_validation](readmes/readmechallenge13.md)
 - [binary_search_tree](readmes/readmelab13.md)
 - [fizzbuzz_tree](readmes/readmechallenge16.md)
+- [binary_breadth_search](readmes/readmechallenge17.md)
