@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.ArrayList;
+import utilities.Queue;
 
 public class Tree <T> {
     //variables
@@ -55,6 +56,24 @@ public class Tree <T> {
             postOrder(current.right, arr); // right
             arr.add((T) current.getData()); // me
         }
+    }
+
+    public ArrayList<T> breadthFirst(){
+        //vars
+        Queue<Node<T>> q = new Queue<>();
+        ArrayList<T> o = new ArrayList<>();
+        //base
+        if (this.root != null) q.enqueue(this.root);
+        //iterate queue
+        while(q.peek() != null){
+            //pop que, add to output
+            Node current = q.dequeue();
+            o.add((T) current.getData());
+            //push two children of pop to que
+            if(current.left != null) q.enqueue(current.left);
+            if(current.right != null) q.enqueue(current.right);
+        }
+        return o;
     }
 
 }
