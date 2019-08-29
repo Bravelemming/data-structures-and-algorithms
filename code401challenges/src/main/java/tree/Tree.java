@@ -6,6 +6,7 @@ import utilities.Queue;
 public class Tree <T> {
     //variables
     public Node root;
+    public int max = 0;
 
     //constructor
     public Tree () {
@@ -76,4 +77,25 @@ public class Tree <T> {
         return o;
     }
 
+    public int findMax(Node current){
+        //base exit condition
+        if (current != null){
+            findMax(current.left); // left
+            if (current.getData() != null) {
+                if ((int) current.getData() > this.getMax()) {
+                    this.setMax((int) current.getData());
+                }
+            }// me
+            findMax(current.right); // right
+        }
+        return this.getMax();
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    public void setMax(int max) {
+        this.max = max;
+    }
 }
