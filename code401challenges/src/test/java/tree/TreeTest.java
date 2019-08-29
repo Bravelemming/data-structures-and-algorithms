@@ -41,4 +41,26 @@ public class TreeTest {
 
         assertEquals(expected,actual);
     }
+
+    @Test
+    public void findMax() {
+        int actual = t.findMax(t.root);
+        int expected = 9;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getMax() {
+        int actual = t.getMax();
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setMax() {
+        t.setMax(3);
+        int actual = t.getMax();
+        int expected = 3;
+        assertEquals(expected, actual);
+    }
 }

@@ -13,3 +13,4 @@
 - [binary_search_tree](readmes/readmelab13.md)
 - [fizzbuzz_tree](readmes/readmechallenge16.md)
 - [binary_breadth_search](readmes/readmechallenge17.md)
+- [binary_tree_max](readmes/readmechallenge18.md)
