@@ -15,3 +15,4 @@
 - [binary_breadth_search](readmes/readmechallenge17.md)
 - [binary_tree_max](readmes/readmechallenge18.md)
 - [insertion_sort](readmes/readmelab26.md)
+- [merge_sort](readmes/readmechallenge27.md)
