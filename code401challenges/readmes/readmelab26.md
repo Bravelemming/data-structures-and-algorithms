@@ -31,6 +31,7 @@ Challenge by: Codefellows.
 ```
 
 ### blog post notes:
+- [blog_insertion_sort](/blogs/blog_insertion_sort.md)
 - Create a BLOG.md document using the template provided
 - 1 short video resource
 - 2 quality readings/references
