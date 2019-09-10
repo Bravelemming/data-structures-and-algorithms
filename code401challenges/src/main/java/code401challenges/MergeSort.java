@@ -2,24 +2,25 @@ package code401challenges;
 
 public class MergeSort {
     public static void mergeSort(int[] arr){
-        int n = arr.length-1;
+        int n = arr.length;
 
         if (n > 1){
             int mid = n/2;
-            int left[];    //declaring array
+            int[] left;    //declaring array
             left = new int[mid];  // allocating memory to array
+            int[] right;    //declaring array
+            right = new int[arr.length - mid];  // allocating memory to array
 
-            int right[];    //declaring array
-            right = new int[mid];  // allocating memory to array
-
-            for (int i = 0; i < n ; i ++){
-                if ( i < mid ){
-                    right[i] = arr [i];
-                }
-                if ( i >= mid ){
+            for (int i = 0 ; i < left.length; i ++ ){
                     left[i] = arr [i];
-                }
             }
+            for (int i = 0 ; i < right.length; i ++ ){
+                right[i] = arr [i+ mid];
+            }
+
+
+            MergeSort.toString(left);
+            MergeSort.toString(right);
 
             // sort the left side
             mergeSort(left);
@@ -48,7 +49,7 @@ public class MergeSort {
         }
         if (i == left.length){
             //set remaining entries in arr to remaining values in right
-            while (j < n - mid) {
+            while (j < right.length) {
                 arr[k] = right[j];
                 j++;
                 k++;
@@ -57,7 +58,7 @@ public class MergeSort {
         }
         else {
             //set remaining entries in arr to remaining values in left
-            while ( i < mid) {
+            while ( i < left.length) {
                 arr[k] = left[i];
                 i++;
                 k++;
@@ -67,8 +68,9 @@ public class MergeSort {
     }
 
     public static void toString(int arr[]) {
+        System.out.println("Get ready to ARRAY: ");
         for (int i=0; i < arr.length; i++ ) {
-            System.out.println(arr[i]);
+            System.out.println("Array at " + i + ": " +arr[i]);
         }
     }
 }
