@@ -17,13 +17,13 @@ public class QuickSortTest {
     public void quickSort() {
 
         //array
-        int[] test = {456, 56, 123, 546, 0, 1};
+        int[] test = {56, 23, 46, 0, 1};
 
-        QuickSort.quickSort(test, 456, 1);
+        QuickSort.quickSort(test, 456, 1 );
 
         QuickSort.toString(test);
 
-        int[] expected = {0, 1, 56, 123, 456, 546};
+        int[] expected = {0, 1, 23, 46, 56};
         assertArrayEquals(expected, test);
     }
 
