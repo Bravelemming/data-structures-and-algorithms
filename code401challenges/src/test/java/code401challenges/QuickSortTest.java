@@ -19,7 +19,7 @@ public class QuickSortTest {
         //array
         int[] test = {56, 23, 46, 0, 1};
 
-        QuickSort.quickSort(test, 456, 1 );
+        QuickSort.quickSort(test, 0, test.length-1 );
 
         QuickSort.toString(test);
 
