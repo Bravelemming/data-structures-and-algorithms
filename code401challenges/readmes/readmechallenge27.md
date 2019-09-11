@@ -1,4 +1,4 @@
-# Binary Tree Max Value
+# Merge Sort
 Author: Jack Daniel Kinne.
 Challenge by: Codefellows.
 <!-- Short summary or background information -->
