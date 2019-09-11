@@ -20,21 +20,21 @@ public class QuickSort {
         for (int i = left; i < right; i ++) {
             if (arr[i] <= pivot){
                 low++;
-                swap(arr, i, low);
+                swap(arr, low, i);
             }
         }
         // place the value of the pivot location in the middle.
         // all numbers smaller than the pivot are on the left, larger on the right.
-        swap(arr, right, low + 1);
+        swap(arr, low + 1, right);
         // return the pivot index point
         return low + 1;
     }
 
-    public static void swap(int[] arr, int i, int low){
+    public static void swap(int[] arr, int first, int last){
         int temp;
-        temp = arr[i];
-        arr[i] = arr[low];
-        arr[low] = temp;
+        temp = arr[first];
+        arr[first] = arr[last];
+        arr[last] = temp;
     }
 
     public static void toString(int arr[]) {
