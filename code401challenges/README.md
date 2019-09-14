@@ -17,3 +17,4 @@
 - [insertion_sort](readmes/readmelab26.md)
 - [merge_sort](readmes/readmechallenge27.md)
 - [quick_sort](readmes/readmechallenge28.md)
+- [hash_table](readmes/readmehashtables.md)
