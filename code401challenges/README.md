@@ -18,3 +18,4 @@
 - [merge_sort](readmes/readmechallenge27.md)
 - [quick_sort](readmes/readmechallenge28.md)
 - [hash_table](readmes/readmehashtables.md)
+- [repeated_word](readmes/readmerepeatword31.md)
