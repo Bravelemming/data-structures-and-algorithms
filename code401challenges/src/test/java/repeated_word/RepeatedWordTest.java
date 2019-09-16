@@ -66,5 +66,19 @@ public class RepeatedWordTest {
 
     }
 
+    @Test
+    public void repeatedWordsTestFail() {
+        String dry = "After me.";
+
+        RepeatedWord r = new RepeatedWord(dry);
+
+        String actual = r.check();
+
+        String expected = "And so it was that there were no repeated words.  Crabapple.";
+
+
+        assertEquals(expected, actual);
+
+    }
 
 }
