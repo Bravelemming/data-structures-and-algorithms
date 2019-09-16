@@ -19,3 +19,4 @@
 - [quick_sort](readmes/readmechallenge28.md)
 - [hash_table](readmes/readmehashtables.md)
 - [repeated_word](readmes/readmerepeatword31.md)
+- [tree_intersection](readmes/readmetwoBSTs32.md)
