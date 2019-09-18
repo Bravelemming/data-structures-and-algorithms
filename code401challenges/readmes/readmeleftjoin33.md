@@ -21,7 +21,7 @@
 - return left HT as final.
 
 ## whiteboard
-![/assets/leftjoin.jpg](/assets/leftjoin.jpg)
+![/assets/leftjoin.jpg](../assets/leftjoin.jpg)
 
 ## credits and contributions
 - Matt Stuhring
