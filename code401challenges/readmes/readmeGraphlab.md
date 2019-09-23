@@ -1,4 +1,4 @@
-# Repeated values in two BSTS
+# implement a Graph
 - Author: Jack Daniel Kinne.
 - Challenge by: Codefellows.
 <!-- Short summary or background information -->
