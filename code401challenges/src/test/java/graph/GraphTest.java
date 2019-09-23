@@ -158,5 +158,29 @@ public class GraphTest {
         assertNotNull(list);
     }
 
+    @Test
+    public void breathFirstSearchTest() {
+        Graph graph = new Graph();
 
+        Vertex vone = graph.addVertex("Grimley the Orthodontist");
+        Vertex vtwo = graph.addVertex("Susan from accounting");
+        Vertex vthree = graph.addVertex("Rick Sanchez");
+        Vertex vfour = graph.addVertex("Morty Smith");
+        Edge e = graph.addEdgeAtoB(vone, vtwo, 3);
+        Edge e2 = graph.addEdgeAtoB(vtwo, vthree, 3);
+        Edge e3 = graph.addEdgeAtoB(vthree, vfour, 3);
+
+        List<Vertex> list = graph.breadth_first_search(vone);
+
+        StringBuilder sb = new StringBuilder("");
+
+        for (Vertex v : list){
+            sb.append(v.getValue());
+        }
+        String s = sb.toString();
+        String expected = "Grimley the OrthodontistSusan from accountingRick SanchezMorty Smith";
+
+        assertEquals(s, expected);
+
+    }
 }

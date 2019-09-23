@@ -1,9 +1,6 @@
 package graph;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Graph {
     //vars
@@ -120,6 +117,62 @@ public class Graph {
         return this.adjacentVertices.size();
     }
 
+    // code challenge 36 - breadth first search
+    //helper function, didnt end up using it but i'm totally keeping it.
+    void recursiveAddToList(Vertex current, Queue<Vertex> toBeWalked, List<Vertex> seen){
+        //if null, exit
+        if (current == null){
+            return;
+        }
+        //iterate tobewalked
+        while (toBeWalked != null) {
+            //grab list of edges
+            List<Edge> el = this.adjacentVertices.get(current);
+            //for each edge
+            for (Edge e : el) {
+                //if we haven't seen it
+                if (!seen.contains(e.getVertex())) {
+                    //add it to seen
+                    seen.add(e.getVertex());
+                    //add it to queue
+                    toBeWalked.add(e.getVertex());
+                }
+            }
+            //move current forward
+            current = toBeWalked.poll();
+        }
+
+    }
+
+    List<Vertex> breadth_first_search(Vertex v){
+        //vars
+        Vertex current = v;
+        List<Vertex> seen = new ArrayList<>();
+        Queue<Vertex> toBeWalked = new LinkedList<>();
+        //setup
+        seen.add(v);
+        toBeWalked.add(v);
+
+        //iterate tobewalked
+        while ( current!= null ) {
+            //grab list of edges
+            List<Edge> el = this.adjacentVertices.get(current);
+            //for each edge
+            for (Edge e : el) {
+                //if we haven't seen it
+                if (!seen.contains(e.getVertex())) {
+                    //add it to seen
+                    seen.add(e.getVertex());
+                    //add it to queue
+                    toBeWalked.add(e.getVertex());
+                }
+            }
+            //move current forward
+            current = toBeWalked.poll();
+        }
+        return seen;
+    }
+    
 
     //gets and sets
     public HashMap<Vertex, List<Edge>> getAdjacentVertices() {
