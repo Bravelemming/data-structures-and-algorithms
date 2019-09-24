@@ -172,7 +172,7 @@ public class Graph {
         }
         return seen;
     }
-    
+
 
     //gets and sets
     public HashMap<Vertex, List<Edge>> getAdjacentVertices() {
