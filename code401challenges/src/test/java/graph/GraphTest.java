@@ -183,4 +183,60 @@ public class GraphTest {
         assertEquals(s, expected);
 
     }
+
+    @Test
+    public void depthFirstSearchTest() {
+        Graph graph = new Graph();
+
+        Vertex vone = graph.addVertex("Grimley the Orthodontist");
+        Vertex vtwo = graph.addVertex("Susan from accounting");
+        Vertex vthree = graph.addVertex("Rick Sanchez");
+        Vertex vfour = graph.addVertex("Morty Smith");
+        Edge e = graph.addEdgeAtoB(vone, vtwo, 3);
+        Edge e2 = graph.addEdgeAtoB(vtwo, vthree, 3);
+        Edge e3 = graph.addEdgeAtoB(vthree, vfour, 3);
+
+        List<Vertex> list = graph.depth_first_search(vone);
+
+        StringBuilder sb = new StringBuilder("");
+
+        for (Vertex v : list) {
+            sb.append(v.getValue() + " ");
+        }
+        String s = sb.toString();
+        String expected = "Grimley the Orthodontist Susan from accounting Rick Sanchez Morty Smith ";
+
+        assertEquals(s, expected);
+    }
+
+    @Test
+    public void depthFirstSearchTestTwo() {
+        Graph graph = new Graph();
+
+        Vertex vone = graph.addVertex("Grimley the Orthodontist");
+        Vertex vtwo = graph.addVertex("Susan from accounting");
+        Vertex vthree = graph.addVertex("Rick Sanchez");
+        Vertex vfour = graph.addVertex("Morty Smith");
+        Vertex vfive = graph.addVertex("Bob");
+        Vertex vsix = graph.addVertex("CTHULU WHO RISES FROM THE DEEP");
+
+        Edge e = graph.addEdgeAtoB(vone, vtwo, 3);
+        Edge e2 = graph.addEdgeAtoB(vtwo, vthree, 3);
+        Edge e3 = graph.addEdgeAtoB(vthree, vfour, 3);
+        Edge e4 = graph.addEdgeAtoB(vthree, vfive, 3);
+        Edge e5 = graph.addEdgeAtoB(vfour, vsix, 3);
+        Edge e6 = graph.addEdgeAtoB(vone, vsix, 3);
+
+        List<Vertex> list = graph.depth_first_search(vone);
+
+        StringBuilder sb = new StringBuilder("");
+
+        for (Vertex v : list) {
+            sb.append(v.getValue() + " ");
+        }
+        String s = sb.toString();
+        String expected = "Grimley the Orthodontist Susan from accounting Rick Sanchez Morty Smith CTHULU WHO RISES FROM THE DEEP Bob ";
+
+        assertEquals(s, expected);
+    }
 }
