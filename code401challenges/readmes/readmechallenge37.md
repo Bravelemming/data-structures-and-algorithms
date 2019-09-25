@@ -17,7 +17,7 @@ Without utilizing any of the built-in methods available to your language, return
 - return true, sum.
 
 ## whiteboard
-![breadth first search](../assets/graphExample.jpg)
+![whiteboard](../assets/airline-edges.jpg)
 
 ## credits and contributions
 - Demi the dog
