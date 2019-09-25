@@ -173,6 +173,29 @@ public class Graph {
         return seen;
     }
 
+    List<Vertex> depth_first_search(Vertex v){
+        //vars
+        Vertex current = v;
+        List<Vertex> seen = new ArrayList<>();
+        //recursive DFS
+        dfsRecursive(current, seen);
+        //return List
+        return seen;
+    }
+
+    void dfsRecursive(Vertex current, List<Vertex> seen){
+        //grab neighbors
+        List<Edge>adjList = this.adjacentVertices.get(current);
+        //add current node to seen
+        seen.add(current);
+        for (Edge e : adjList){
+            Vertex v = e.getVertex();
+            if (v!= null && !seen.contains(v)){
+                dfsRecursive(v, seen);
+            }
+        }
+
+    }
 
     //gets and sets
     public HashMap<Vertex, List<Edge>> getAdjacentVertices() {
